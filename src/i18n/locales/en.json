@@ -1,0 +1,86 @@
+{
+  "app_name": "ScolioBuddy",
+  "app_subtitle": "Professional Scoliometer Measurement Tool",
+  "loading": "Loading...",
+  "instructions": {
+    "title": "How to Use ScolioBuddy",
+    "step1_title": "Step 1: Add a Patient",
+    "step1_desc": "Start by adding a patient profile with their name, date of birth, and optional profile picture.",
+    "step2_title": "Step 2: Perform Measurement",
+    "step2_desc": "Select a patient and tap 'Add Measurement'. Use your 3D printed scoliometer with the phone to measure spinal curvature.",
+    "step3_title": "Step 3: Position the Device",
+    "step3_desc": "Place the phone in the scoliometer device and position it on the patient's back. The app will display the angle in real-time.",
+    "step4_title": "Step 4: Save & Track",
+    "step4_desc": "Save the measurement to track progress over time. View history to compare previous measurements.",
+    "get_started": "Get Started",
+    "skip": "Skip Instructions"
+  },
+  "patients": {
+    "title": "Patients",
+    "no_patients": "No Patients Yet",
+    "no_patients_desc": "Tap the + button to add your first patient",
+    "measurement": "measurement",
+    "measurements": "measurements",
+    "add_patient": "Add New Patient"
+  },
+  "add_patient": {
+    "title": "Add New Patient",
+    "name": "Patient Name",
+    "dob": "Date of Birth (MM/DD/YYYY)",
+    "tap_photo": "Tap to add photo",
+    "change_photo": "Tap to change photo",
+    "save": "Save Patient",
+    "cancel": "Cancel",
+    "select_photo": "Select Photo",
+    "take_photo": "Take Photo",
+    "choose_library": "Choose from Library",
+    "error_name": "Please enter patient name",
+    "error_dob": "Please enter date of birth",
+    "error_dob_format": "Please enter date in MM/DD/YYYY format",
+    "success": "Patient added successfully"
+  },
+  "patient_detail": {
+    "title": "Patient Details",
+    "dob": "DOB",
+    "history": "Measurement History",
+    "no_measurements": "No measurements yet",
+    "no_measurements_desc": "Tap the + button to add a measurement",
+    "add_measurement": "Add Measurement",
+    "location": "Location",
+    "notes": "Notes"
+  },
+  "measurement": {
+    "title": "New Measurement",
+    "scoliometer": "Scoliometer Measurement",
+    "not_calibrated": "Not Calibrated",
+    "measuring": "Measuring...",
+    "calibrate": "Calibrate Device (Set to 0°)",
+    "recalibrate": "Recalibrate",
+    "start": "Start Measurement",
+    "location": "Spinal Location",
+    "cervical": "Cervical",
+    "thoracic": "Thoracic",
+    "lumbar": "Lumbar",
+    "notes_optional": "Notes (Optional)",
+    "save": "Save Measurement",
+    "cancel": "Cancel",
+    "error_calibrate": "Please calibrate the device first",
+    "error_start": "Please start measurement first",
+    "success": "Measurement saved successfully",
+    "calibrated": "Device calibrated to current position (0°)"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "select_language": "Select Language"
+  },
+  "languages": {
+    "en": "English",
+    "th": "ไทย (Thai)",
+    "ja": "日本語 (Japanese)",
+    "ar": "العربية (Arabic)",
+    "zh": "中文 (Chinese)",
+    "es": "Español (Spanish)",
+    "fr": "Français (French)"
+  }
+}

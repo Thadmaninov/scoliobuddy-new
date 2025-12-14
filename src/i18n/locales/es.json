@@ -1,0 +1,86 @@
+{
+  "app_name": "ScolioBuddy",
+  "app_subtitle": "Herramienta Profesional de Medición de Escoliómetro",
+  "loading": "Cargando...",
+  "instructions": {
+    "title": "Cómo Usar ScolioBuddy",
+    "step1_title": "Paso 1: Agregar un Paciente",
+    "step1_desc": "Comience agregando un perfil de paciente con su nombre, fecha de nacimiento y foto de perfil opcional.",
+    "step2_title": "Paso 2: Realizar Medición",
+    "step2_desc": "Seleccione un paciente y toque 'Agregar Medición'. Use su escoliómetro impreso en 3D con el teléfono para medir la curvatura espinal.",
+    "step3_title": "Paso 3: Posicionar el Dispositivo",
+    "step3_desc": "Coloque el teléfono en el dispositivo escoliómetro y colóquelo en la espalda del paciente. La aplicación mostrará el ángulo en tiempo real.",
+    "step4_title": "Paso 4: Guardar y Rastrear",
+    "step4_desc": "Guarde la medición para rastrear el progreso a lo largo del tiempo. Vea el historial para comparar mediciones anteriores.",
+    "get_started": "Comenzar",
+    "skip": "Saltar Instrucciones"
+  },
+  "patients": {
+    "title": "Pacientes",
+    "no_patients": "Sin Pacientes Aún",
+    "no_patients_desc": "Toque el botón + para agregar su primer paciente",
+    "measurement": "medición",
+    "measurements": "mediciones",
+    "add_patient": "Agregar Nuevo Paciente"
+  },
+  "add_patient": {
+    "title": "Agregar Nuevo Paciente",
+    "name": "Nombre del Paciente",
+    "dob": "Fecha de Nacimiento (DD/MM/AAAA)",
+    "tap_photo": "Toque para agregar foto",
+    "change_photo": "Toque para cambiar foto",
+    "save": "Guardar Paciente",
+    "cancel": "Cancelar",
+    "select_photo": "Seleccionar Foto",
+    "take_photo": "Tomar Foto",
+    "choose_library": "Elegir de la Biblioteca",
+    "error_name": "Por favor ingrese el nombre del paciente",
+    "error_dob": "Por favor ingrese la fecha de nacimiento",
+    "error_dob_format": "Por favor ingrese la fecha en formato DD/MM/AAAA",
+    "success": "Paciente agregado exitosamente"
+  },
+  "patient_detail": {
+    "title": "Detalles del Paciente",
+    "dob": "Fecha de Nacimiento",
+    "history": "Historial de Mediciones",
+    "no_measurements": "Sin mediciones aún",
+    "no_measurements_desc": "Toque el botón + para agregar una medición",
+    "add_measurement": "Agregar Medición",
+    "location": "Ubicación",
+    "notes": "Notas"
+  },
+  "measurement": {
+    "title": "Nueva Medición",
+    "scoliometer": "Medición del Escoliómetro",
+    "not_calibrated": "No Calibrado",
+    "measuring": "Midiendo...",
+    "calibrate": "Calibrar Dispositivo (Ajustar a 0°)",
+    "recalibrate": "Recalibrar",
+    "start": "Iniciar Medición",
+    "location": "Ubicación Espinal",
+    "cervical": "Cervical",
+    "thoracic": "Torácica",
+    "lumbar": "Lumbar",
+    "notes_optional": "Notas (Opcional)",
+    "save": "Guardar Medición",
+    "cancel": "Cancelar",
+    "error_calibrate": "Por favor calibre el dispositivo primero",
+    "error_start": "Por favor inicie la medición primero",
+    "success": "Medición guardada exitosamente",
+    "calibrated": "Dispositivo calibrado a la posición actual (0°)"
+  },
+  "settings": {
+    "title": "Configuración",
+    "language": "Idioma",
+    "select_language": "Seleccionar Idioma"
+  },
+  "languages": {
+    "en": "English",
+    "th": "ไทย (Thai)",
+    "ja": "日本語 (Japanese)",
+    "ar": "العربية (Arabic)",
+    "zh": "中文 (Chinese)",
+    "es": "Español (Spanish)",
+    "fr": "Français (French)"
+  }
+}

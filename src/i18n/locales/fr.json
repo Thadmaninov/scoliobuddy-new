@@ -1,0 +1,86 @@
+{
+  "app_name": "ScolioBuddy",
+  "app_subtitle": "Outil Professionnel de Mesure Scoliomètre",
+  "loading": "Chargement...",
+  "instructions": {
+    "title": "Comment Utiliser ScolioBuddy",
+    "step1_title": "Étape 1: Ajouter un Patient",
+    "step1_desc": "Commencez par ajouter un profil de patient avec son nom, sa date de naissance et une photo de profil facultative.",
+    "step2_title": "Étape 2: Effectuer une Mesure",
+    "step2_desc": "Sélectionnez un patient et appuyez sur 'Ajouter une Mesure'. Utilisez votre scoliomètre imprimé en 3D avec le téléphone pour mesurer la courbure spinale.",
+    "step3_title": "Étape 3: Positionner l'Appareil",
+    "step3_desc": "Placez le téléphone dans le dispositif scoliomètre et positionnez-le sur le dos du patient. L'application affichera l'angle en temps réel.",
+    "step4_title": "Étape 4: Enregistrer et Suivre",
+    "step4_desc": "Enregistrez la mesure pour suivre les progrès au fil du temps. Consultez l'historique pour comparer les mesures précédentes.",
+    "get_started": "Commencer",
+    "skip": "Passer les Instructions"
+  },
+  "patients": {
+    "title": "Patients",
+    "no_patients": "Aucun Patient Encore",
+    "no_patients_desc": "Appuyez sur le bouton + pour ajouter votre premier patient",
+    "measurement": "mesure",
+    "measurements": "mesures",
+    "add_patient": "Ajouter un Nouveau Patient"
+  },
+  "add_patient": {
+    "title": "Ajouter un Nouveau Patient",
+    "name": "Nom du Patient",
+    "dob": "Date de Naissance (JJ/MM/AAAA)",
+    "tap_photo": "Appuyez pour ajouter une photo",
+    "change_photo": "Appuyez pour changer la photo",
+    "save": "Enregistrer le Patient",
+    "cancel": "Annuler",
+    "select_photo": "Sélectionner une Photo",
+    "take_photo": "Prendre une Photo",
+    "choose_library": "Choisir dans la Bibliothèque",
+    "error_name": "Veuillez entrer le nom du patient",
+    "error_dob": "Veuillez entrer la date de naissance",
+    "error_dob_format": "Veuillez entrer la date au format JJ/MM/AAAA",
+    "success": "Patient ajouté avec succès"
+  },
+  "patient_detail": {
+    "title": "Détails du Patient",
+    "dob": "Date de Naissance",
+    "history": "Historique des Mesures",
+    "no_measurements": "Aucune mesure encore",
+    "no_measurements_desc": "Appuyez sur le bouton + pour ajouter une mesure",
+    "add_measurement": "Ajouter une Mesure",
+    "location": "Emplacement",
+    "notes": "Notes"
+  },
+  "measurement": {
+    "title": "Nouvelle Mesure",
+    "scoliometer": "Mesure du Scoliomètre",
+    "not_calibrated": "Non Calibré",
+    "measuring": "Mesure en Cours...",
+    "calibrate": "Calibrer l'Appareil (Régler à 0°)",
+    "recalibrate": "Recalibrer",
+    "start": "Commencer la Mesure",
+    "location": "Emplacement Spinal",
+    "cervical": "Cervical",
+    "thoracic": "Thoracique",
+    "lumbar": "Lombaire",
+    "notes_optional": "Notes (Facultatif)",
+    "save": "Enregistrer la Mesure",
+    "cancel": "Annuler",
+    "error_calibrate": "Veuillez d'abord calibrer l'appareil",
+    "error_start": "Veuillez d'abord commencer la mesure",
+    "success": "Mesure enregistrée avec succès",
+    "calibrated": "Appareil calibré à la position actuelle (0°)"
+  },
+  "settings": {
+    "title": "Paramètres",
+    "language": "Langue",
+    "select_language": "Sélectionner la Langue"
+  },
+  "languages": {
+    "en": "English",
+    "th": "ไทย (Thai)",
+    "ja": "日本語 (Japanese)",
+    "ar": "العربية (Arabic)",
+    "zh": "中文 (Chinese)",
+    "es": "Español (Spanish)",
+    "fr": "Français (French)"
+  }
+}

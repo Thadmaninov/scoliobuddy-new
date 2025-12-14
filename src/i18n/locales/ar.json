@@ -1,0 +1,86 @@
+{
+  "app_name": "ScolioBuddy",
+  "app_subtitle": "أداة قياس الجنف الاحترافية",
+  "loading": "جاري التحميل...",
+  "instructions": {
+    "title": "كيفية استخدام ScolioBuddy",
+    "step1_title": "الخطوة 1: إضافة مريض",
+    "step1_desc": "ابدأ بإضافة ملف تعريف المريض مع اسمه وتاريخ ميلاده وصورة الملف الشخصي الاختيارية.",
+    "step2_title": "الخطوة 2: إجراء القياس",
+    "step2_desc": "حدد مريضًا واضغط على 'إضافة قياس'. استخدم جهاز قياس الجنف المطبوع ثلاثي الأبعاد مع الهاتف لقياس انحناء العمود الفقري.",
+    "step3_title": "الخطوة 3: وضع الجهاز",
+    "step3_desc": "ضع الهاتف في جهاز قياس الجنف وضعه على ظهر المريض. سيعرض التطبيق الزاوية في الوقت الفعلي.",
+    "step4_title": "الخطوة 4: الحفظ والتتبع",
+    "step4_desc": "احفظ القياس لتتبع التقدم بمرور الوقت. اعرض السجل لمقارنة القياسات السابقة.",
+    "get_started": "ابدأ",
+    "skip": "تخطي التعليمات"
+  },
+  "patients": {
+    "title": "المرضى",
+    "no_patients": "لا يوجد مرضى بعد",
+    "no_patients_desc": "اضغط على زر + لإضافة مريضك الأول",
+    "measurement": "قياس",
+    "measurements": "قياسات",
+    "add_patient": "إضافة مريض جديد"
+  },
+  "add_patient": {
+    "title": "إضافة مريض جديد",
+    "name": "اسم المريض",
+    "dob": "تاريخ الميلاد (DD/MM/YYYY)",
+    "tap_photo": "اضغط لإضافة صورة",
+    "change_photo": "اضغط لتغيير الصورة",
+    "save": "حفظ المريض",
+    "cancel": "إلغاء",
+    "select_photo": "اختر صورة",
+    "take_photo": "التقط صورة",
+    "choose_library": "اختر من المكتبة",
+    "error_name": "الرجاء إدخال اسم المريض",
+    "error_dob": "الرجاء إدخال تاريخ الميلاد",
+    "error_dob_format": "الرجاء إدخال التاريخ بتنسيق DD/MM/YYYY",
+    "success": "تمت إضافة المريض بنجاح"
+  },
+  "patient_detail": {
+    "title": "تفاصيل المريض",
+    "dob": "تاريخ الميلاد",
+    "history": "سجل القياسات",
+    "no_measurements": "لا توجد قياسات بعد",
+    "no_measurements_desc": "اضغط على زر + لإضافة قياس",
+    "add_measurement": "إضافة قياس",
+    "location": "الموقع",
+    "notes": "ملاحظات"
+  },
+  "measurement": {
+    "title": "قياس جديد",
+    "scoliometer": "قياس الجنف",
+    "not_calibrated": "غير معاير",
+    "measuring": "جاري القياس...",
+    "calibrate": "معايرة الجهاز (ضبط على 0°)",
+    "recalibrate": "إعادة المعايرة",
+    "start": "بدء القياس",
+    "location": "موقع العمود الفقري",
+    "cervical": "عنقي",
+    "thoracic": "صدري",
+    "lumbar": "قطني",
+    "notes_optional": "ملاحظات (اختياري)",
+    "save": "حفظ القياس",
+    "cancel": "إلغاء",
+    "error_calibrate": "يرجى معايرة الجهاز أولاً",
+    "error_start": "يرجى بدء القياس أولاً",
+    "success": "تم حفظ القياس بنجاح",
+    "calibrated": "تمت معايرة الجهاز إلى الموضع الحالي (0°)"
+  },
+  "settings": {
+    "title": "الإعدادات",
+    "language": "اللغة",
+    "select_language": "اختر اللغة"
+  },
+  "languages": {
+    "en": "English",
+    "th": "ไทย (Thai)",
+    "ja": "日本語 (Japanese)",
+    "ar": "العربية (Arabic)",
+    "zh": "中文 (Chinese)",
+    "es": "Español (Spanish)",
+    "fr": "Français (French)"
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "app_name": "ScolioBuddy",
+  "app_subtitle": "专业脊柱侧弯测量工具",
+  "loading": "加载中...",
+  "instructions": {
+    "title": "如何使用 ScolioBuddy",
+    "step1_title": "步骤 1：添加患者",
+    "step1_desc": "首先添加患者档案，包括姓名、出生日期和可选的个人照片。",
+    "step2_title": "步骤 2：进行测量",
+    "step2_desc": "选择患者并点击"添加测量"。使用3D打印的脊柱侧弯测量仪和手机测量脊柱弯曲度。",
+    "step3_title": "步骤 3：放置设备",
+    "step3_desc": "将手机放入脊柱侧弯测量仪设备中，并放置在患者背部。应用程序将实时显示角度。",
+    "step4_title": "步骤 4：保存和跟踪",
+    "step4_desc": "保存测量值以跟踪随时间的进展。查看历史记录以比较以前的测量值。",
+    "get_started": "开始",
+    "skip": "跳过说明"
+  },
+  "patients": {
+    "title": "患者",
+    "no_patients": "还没有患者",
+    "no_patients_desc": "点击 + 按钮添加您的第一位患者",
+    "measurement": "测量",
+    "measurements": "测量",
+    "add_patient": "添加新患者"
+  },
+  "add_patient": {
+    "title": "添加新患者",
+    "name": "患者姓名",
+    "dob": "出生日期 (MM/DD/YYYY)",
+    "tap_photo": "点击添加照片",
+    "change_photo": "点击更改照片",
+    "save": "保存患者",
+    "cancel": "取消",
+    "select_photo": "选择照片",
+    "take_photo": "拍照",
+    "choose_library": "从图库选择",
+    "error_name": "请输入患者姓名",
+    "error_dob": "请输入出生日期",
+    "error_dob_format": "请以 MM/DD/YYYY 格式输入日期",
+    "success": "患者添加成功"
+  },
+  "patient_detail": {
+    "title": "患者详情",
+    "dob": "出生日期",
+    "history": "测量历史",
+    "no_measurements": "还没有测量",
+    "no_measurements_desc": "点击 + 按钮添加测量",
+    "add_measurement": "添加测量",
+    "location": "位置",
+    "notes": "备注"
+  },
+  "measurement": {
+    "title": "新测量",
+    "scoliometer": "脊柱侧弯测量",
+    "not_calibrated": "未校准",
+    "measuring": "测量中...",
+    "calibrate": "校准设备（设置为 0°）",
+    "recalibrate": "重新校准",
+    "start": "开始测量",
+    "location": "脊柱位置",
+    "cervical": "颈椎",
+    "thoracic": "胸椎",
+    "lumbar": "腰椎",
+    "notes_optional": "备注（可选）",
+    "save": "保存测量",
+    "cancel": "取消",
+    "error_calibrate": "请先校准设备",
+    "error_start": "请先开始测量",
+    "success": "测量保存成功",
+    "calibrated": "设备已校准到当前位置（0°）"
+  },
+  "settings": {
+    "title": "设置",
+    "language": "语言",
+    "select_language": "选择语言"
+  },
+  "languages": {
+    "en": "English",
+    "th": "ไทย (Thai)",
+    "ja": "日本語 (Japanese)",
+    "ar": "العربية (Arabic)",
+    "zh": "中文 (Chinese)",
+    "es": "Español (Spanish)",
+    "fr": "Français (French)"
+  }
+}

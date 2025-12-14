@@ -1,0 +1,86 @@
+{
+  "app_name": "ScolioBuddy",
+  "app_subtitle": "プロ用脊柱側弯症測定ツール",
+  "loading": "読み込み中...",
+  "instructions": {
+    "title": "ScolioBuddyの使い方",
+    "step1_title": "ステップ1：患者を追加",
+    "step1_desc": "名前、生年月日、プロフィール写真を含む患者プロフィールを追加します。",
+    "step2_title": "ステップ2：測定を実行",
+    "step2_desc": "患者を選択し、「測定を追加」をタップします。3Dプリントされたスコリオメーターと電話を使用して脊柱の湾曲を測定します。",
+    "step3_title": "ステップ3：デバイスを配置",
+    "step3_desc": "スコリオメーターデバイスに電話を置き、患者の背中に配置します。アプリは角度をリアルタイムで表示します。",
+    "step4_title": "ステップ4：保存と追跡",
+    "step4_desc": "測定を保存して、時間の経過とともに進捗を追跡します。履歴を表示して以前の測定値と比較します。",
+    "get_started": "始める",
+    "skip": "説明をスキップ"
+  },
+  "patients": {
+    "title": "患者",
+    "no_patients": "まだ患者がいません",
+    "no_patients_desc": "+ボタンをタップして最初の患者を追加します",
+    "measurement": "測定",
+    "measurements": "測定",
+    "add_patient": "新しい患者を追加"
+  },
+  "add_patient": {
+    "title": "新しい患者を追加",
+    "name": "患者名",
+    "dob": "生年月日 (MM/DD/YYYY)",
+    "tap_photo": "タップして写真を追加",
+    "change_photo": "タップして写真を変更",
+    "save": "患者を保存",
+    "cancel": "キャンセル",
+    "select_photo": "写真を選択",
+    "take_photo": "写真を撮る",
+    "choose_library": "ライブラリから選択",
+    "error_name": "患者名を入力してください",
+    "error_dob": "生年月日を入力してください",
+    "error_dob_format": "MM/DD/YYYY形式で日付を入力してください",
+    "success": "患者が正常に追加されました"
+  },
+  "patient_detail": {
+    "title": "患者の詳細",
+    "dob": "生年月日",
+    "history": "測定履歴",
+    "no_measurements": "まだ測定がありません",
+    "no_measurements_desc": "+ボタンをタップして測定を追加します",
+    "add_measurement": "測定を追加",
+    "location": "場所",
+    "notes": "メモ"
+  },
+  "measurement": {
+    "title": "新しい測定",
+    "scoliometer": "スコリオメーター測定",
+    "not_calibrated": "未キャリブレーション",
+    "measuring": "測定中...",
+    "calibrate": "デバイスをキャリブレート (0°に設定)",
+    "recalibrate": "再キャリブレート",
+    "start": "測定を開始",
+    "location": "脊柱の位置",
+    "cervical": "頸椎",
+    "thoracic": "胸椎",
+    "lumbar": "腰椎",
+    "notes_optional": "メモ (オプション)",
+    "save": "測定を保存",
+    "cancel": "キャンセル",
+    "error_calibrate": "最初にデバイスをキャリブレートしてください",
+    "error_start": "最初に測定を開始してください",
+    "success": "測定が正常に保存されました",
+    "calibrated": "デバイスが現在の位置にキャリブレートされました (0°)"
+  },
+  "settings": {
+    "title": "設定",
+    "language": "言語",
+    "select_language": "言語を選択"
+  },
+  "languages": {
+    "en": "English",
+    "th": "ไทย (Thai)",
+    "ja": "日本語 (Japanese)",
+    "ar": "العربية (Arabic)",
+    "zh": "中文 (Chinese)",
+    "es": "Español (Spanish)",
+    "fr": "Français (French)"
+  }
+}
