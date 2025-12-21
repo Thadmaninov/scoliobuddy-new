@@ -156,6 +156,8 @@ export default function AddPatientScreen({ navigation }: AddPatientScreenProps) 
             display={Platform.OS === 'ios' ? 'spinner' : 'default'}
             onChange={onDateChange}
             maximumDate={new Date()}
+            textColor="#ffffffff"
+            accentColor="#fdfeffff"
           />
         )}
 

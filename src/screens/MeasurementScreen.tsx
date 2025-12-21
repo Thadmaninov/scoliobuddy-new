@@ -105,30 +105,31 @@ export default function MeasurementScreen({ navigation, route }: MeasurementScre
           variant="displayLarge"
           style={[styles.angleText, {
             color: theme.colors.secondary,
-            fontFamily: 'KumbhSans_700Bold'
+            fontFamily: 'KumbhSans_700Bold',
+            paddingTop:20
           }]}
         >
           {angle}°
         </Text>
         {!isCalibrated && (
           <Text variant="bodyMedium" style={[styles.statusText, { color: theme.colors.error }]}>
-            ⚠️ Not Calibrated
+            Not Calibrated
           </Text>
         )}
         {isMeasuring && (
           <Text variant="bodyMedium" style={[styles.statusText, { color: '#10b981' }]}>
-            📊 Measuring...
+            Measuring...
           </Text>
         )}
       </View>
 
       {/* Visual Indicator */}
       <View style={styles.visualContainer}>
-        <View style={[styles.visualIndicator, { borderColor: theme.colors.border }]}>
+        <View style={[styles.visualIndicator]}>
           <View
             style={[
               styles.tiltLine,
-              { backgroundColor: theme.colors.accent, transform: [{ rotate: `${angle}deg` }] }
+              { backgroundColor: 'white', transform: [{ rotate: `${angle}deg` }] }
             ]}
           />
         </View>
@@ -216,7 +217,7 @@ export default function MeasurementScreen({ navigation, route }: MeasurementScre
             <Button
               mode="contained"
               onPress={handleSave}
-              style={[styles.button, { backgroundColor: theme.colors.accent }]}
+              style={[styles.button]}
               icon="content-save"
               textColor="#FFFFFF"
             >
@@ -227,7 +228,6 @@ export default function MeasurementScreen({ navigation, route }: MeasurementScre
               mode="outlined"
               onPress={() => setIsMeasuring(false)}
               style={styles.button}
-              textColor={theme.colors.textSecondary}
             >
               Cancel
             </Button>
@@ -248,6 +248,7 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     alignItems: 'center',
     elevation: 4,
+    marginTop: 20,
   },
   angleText: {
     fontSize: 72,

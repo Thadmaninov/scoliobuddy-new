@@ -30,10 +30,10 @@ export default function PatientDetailScreen({ navigation, route }: PatientDetail
     <Card style={styles.measurementCard}>
       <Card.Content>
         <View style={styles.measurementHeader}>
-          <Text variant="titleMedium" style={[styles.angleText, { color: theme.colors.accent }]}>
+          <Text variant="titleMedium" style={[styles.angleText, {paddingTop: 20}]}>
             {item.angle}°
           </Text>
-          <Text variant="bodySmall" style={[styles.dateText, { color: theme.colors.textSecondary }]}>
+          <Text variant="bodySmall" style={[styles.dateText]}>
             {new Date(item.date).toLocaleDateString()} {new Date(item.date).toLocaleTimeString()}
           </Text>
         </View>
@@ -42,7 +42,7 @@ export default function PatientDetailScreen({ navigation, route }: PatientDetail
           Location: {item.location}
         </Text>
         {item.notes && (
-          <Text variant="bodySmall" style={[styles.notesText, { color: theme.colors.textSecondary }]}>
+          <Text variant="bodySmall" style={[styles.notesText]}>
             Notes: {item.notes}
           </Text>
         )}
@@ -104,7 +104,7 @@ export default function PatientDetailScreen({ navigation, route }: PatientDetail
       <FAB
         icon="plus"
         label="Add Measurement"
-        style={[styles.fab, { backgroundColor: theme.colors.accent }]}
+        style={[styles.fab]}
         color="#FFFFFF"
         onPress={() => navigation.navigate('Measurement', { patientId: patient.id })}
       />
