@@ -61,7 +61,7 @@ export default function InstructionsScreen({ navigation }: InstructionsScreenPro
 
         <Button
           mode="contained"
-          onPress={() => navigation.replace('PatientList')}
+          onPress={() => navigation.navigate('PatientList')}
           style={styles.button}
         >
           Get Started
@@ -69,7 +69,7 @@ export default function InstructionsScreen({ navigation }: InstructionsScreenPro
 
         <Button
           mode="text"
-          onPress={() => navigation.replace('PatientList')}
+          onPress={() => navigation.navigate('PatientList')}
           style={styles.skipButton}
         >
           Skip Instructions

@@ -11,7 +11,7 @@ export default function LoadingScreen({ navigation }: LoadingScreenProps) {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigation.replace('Instructions');
+      navigation.replace('Main');
     }, 2500);
 
     return () => clearTimeout(timer);

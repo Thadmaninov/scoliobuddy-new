@@ -1,51 +1,89 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import { DrawerContentScrollView } from '@react-navigation/drawer';
-import { Text, List, Divider, useTheme } from 'react-native-paper';
+import { View, StyleSheet, Image } from 'react-native';
+import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
+import { Text, List, Divider, useTheme, Avatar } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-
-const LANGUAGE_KEY = '@scoliobuddy_language';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function CustomDrawer(props: any) {
   const { t, i18n } = useTranslation();
   const theme = useTheme();
-
-  const languages = [
-    { code: 'en', name: t('languages.en') },
-    { code: 'th', name: t('languages.th') },
-    { code: 'ja', name: t('languages.ja') },
-    { code: 'ar', name: t('languages.ar') },
-    { code: 'zh', name: t('languages.zh') },
-    { code: 'es', name: t('languages.es') },
-    { code: 'fr', name: t('languages.fr') },
-  ];
-
-  const changeLanguage = async (languageCode: string) => {
-    try {
-      await i18n.changeLanguage(languageCode);
-      await AsyncStorage.setItem(LANGUAGE_KEY, languageCode);
-    } catch (error) {
-      console.error('Error changing language:', error);
-    }
-  };
+  const { changeLanguage, availableLanguages, currentLanguage } = useLanguage();
 
   return (
-    <DrawerContentScrollView {...props} style={{ backgroundColor: theme.colors.background }}>
+    <DrawerContentScrollView
+      {...props}
+      style={{ backgroundColor: theme.colors.background }}
+    >
+      {/* App Header */}
       <View style={[styles.header, { backgroundColor: theme.colors.primary }]}>
-        <Text variant="headlineMedium" style={styles.headerText}>
+        <View style={[styles.logoContainer, { borderColor: theme.colors.secondary }]}>
+          <View style={[styles.logoInner, { backgroundColor: theme.colors.secondary }]}>
+            <Text style={styles.logoText}>SB</Text>
+          </View>
+        </View>
+        <Text
+          variant="headlineSmall"
+          style={[styles.headerText, { color: theme.colors.onPrimary }]}
+        >
           {t('app_name')}
         </Text>
-        <Text variant="bodyMedium" style={styles.headerSubtext}>
+        <Text
+          variant="bodySmall"
+          style={[styles.headerSubtext, { color: theme.colors.onPrimary }]}
+        >
           {t('app_subtitle')}
         </Text>
       </View>
 
+      {/* Navigation Items */}
       <List.Section>
-        <List.Subheader style={{ color: theme.colors.onSurface }}>
-          {t('settings.select_language')}
+        <List.Item
+          title={t('patients.title')}
+          description={t('patients.add_patient')}
+          left={(props) => <List.Icon {...props} icon="account-group" color={theme.colors.primary} />}
+          onPress={() => props.navigation.navigate('PatientList')}
+          titleStyle={{
+            color: theme.colors.onSurface,
+            fontFamily: 'KumbhSans_600SemiBold'
+          }}
+          descriptionStyle={{
+            color: theme.colors.onSurfaceVariant,
+            fontFamily: 'KumbhSans_400Regular'
+          }}
+        />
+
+        <List.Item
+          title={t('instructions.title')}
+          description="How to use the app"
+          left={(props) => <List.Icon {...props} icon="information" color={theme.colors.primary} />}
+          onPress={() => props.navigation.navigate('Instructions')}
+          titleStyle={{
+            color: theme.colors.onSurface,
+            fontFamily: 'KumbhSans_600SemiBold'
+          }}
+          descriptionStyle={{
+            color: theme.colors.onSurfaceVariant,
+            fontFamily: 'KumbhSans_400Regular'
+          }}
+        />
+      </List.Section>
+
+      <Divider style={styles.divider} />
+
+      {/* Language Selector Section */}
+      <List.Section>
+        <List.Subheader
+          style={{
+            color: theme.colors.primary,
+            fontFamily: 'KumbhSans_600SemiBold',
+            fontSize: 14
+          }}
+        >
+          🌍 {t('settings.select_language')}
         </List.Subheader>
-        {languages.map((language) => (
+
+        {availableLanguages.map((language) => (
           <List.Item
             key={language.code}
             title={language.name}
@@ -53,33 +91,43 @@ export default function CustomDrawer(props: any) {
             left={(props) => (
               <List.Icon
                 {...props}
-                icon={i18n.language === language.code ? 'check-circle' : 'circle-outline'}
-                color={i18n.language === language.code ? theme.colors.primary : theme.colors.onSurface}
+                icon={currentLanguage === language.code ? 'check-circle' : 'circle-outline'}
+                color={currentLanguage === language.code ? theme.colors.primary : theme.colors.onSurfaceVariant}
               />
             )}
+            right={() =>
+              currentLanguage === language.code ? (
+                <View style={[styles.activeBadge, { backgroundColor: theme.colors.primary }]}>
+                  <Text style={styles.badgeText}>Active</Text>
+                </View>
+              ) : null
+            }
             titleStyle={{
-              color: theme.colors.onSurface,
-              fontFamily: 'KumbhSans_400Regular'
+              color: currentLanguage === language.code ? theme.colors.primary : theme.colors.onSurface,
+              fontFamily: currentLanguage === language.code ? 'KumbhSans_600SemiBold' : 'KumbhSans_400Regular',
             }}
+            style={currentLanguage === language.code ? { backgroundColor: theme.colors.primaryContainer } : {}}
           />
         ))}
       </List.Section>
 
       <Divider style={styles.divider} />
 
-      <List.Item
-        title={t('patients.title')}
-        left={(props) => <List.Icon {...props} icon="account-group" />}
-        onPress={() => props.navigation.navigate('PatientList')}
-        titleStyle={{ color: theme.colors.onSurface }}
-      />
-
-      <List.Item
-        title={t('instructions.title')}
-        left={(props) => <List.Icon {...props} icon="information" />}
-        onPress={() => props.navigation.navigate('Instructions')}
-        titleStyle={{ color: theme.colors.onSurface }}
-      />
+      {/* Footer */}
+      <View style={styles.footer}>
+        <Text
+          variant="bodySmall"
+          style={[styles.footerText, { color: theme.colors.onSurfaceVariant }]}
+        >
+          Version 1.0.0
+        </Text>
+        <Text
+          variant="bodySmall"
+          style={[styles.footerText, { color: theme.colors.onSurfaceVariant }]}
+        >
+          Professional Scoliometer Tool
+        </Text>
+      </View>
     </DrawerContentScrollView>
   );
 }
@@ -88,16 +136,61 @@ const styles = StyleSheet.create({
   header: {
     padding: 20,
     marginBottom: 10,
+    alignItems: 'center',
+  },
+  logoContainer: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    borderWidth: 2,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 15,
+  },
+  logoInner: {
+    width: 70,
+    height: 70,
+    borderRadius: 35,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  logoText: {
+    fontSize: 28,
+    color: '#FFFFFF',
+    fontFamily: 'KumbhSans_700Bold',
+    letterSpacing: 1,
   },
   headerText: {
-    color: '#000',
-    fontWeight: 'bold',
+    fontFamily: 'KumbhSans_700Bold',
+    marginBottom: 5,
   },
   headerSubtext: {
-    color: '#000',
-    marginTop: 5,
+    fontFamily: 'KumbhSans_400Regular',
+    textAlign: 'center',
+    opacity: 0.9,
   },
   divider: {
     marginVertical: 10,
+  },
+  activeBadge: {
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 12,
+    marginRight: 10,
+  },
+  badgeText: {
+    color: '#FFFFFF',
+    fontSize: 10,
+    fontFamily: 'KumbhSans_600SemiBold',
+  },
+  footer: {
+    padding: 20,
+    marginTop: 20,
+    alignItems: 'center',
+  },
+  footerText: {
+    fontFamily: 'KumbhSans_400Regular',
+    fontSize: 12,
+    marginBottom: 4,
   },
 });
