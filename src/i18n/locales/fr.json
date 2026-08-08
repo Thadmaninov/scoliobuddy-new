@@ -13,7 +13,8 @@
     "step4_title": "Étape 4: Enregistrer et Suivre",
     "step4_desc": "Enregistrez la mesure pour suivre les progrès au fil du temps. Consultez l'historique pour comparer les mesures précédentes.",
     "get_started": "Commencer",
-    "skip": "Passer les Instructions"
+    "skip": "Passer les Instructions",
+    "subtitle": "Suivez ces étapes pour commencer"
   },
   "patients": {
     "title": "Patients",
@@ -21,7 +22,9 @@
     "no_patients_desc": "Appuyez sur le bouton + pour ajouter votre premier patient",
     "measurement": "mesure",
     "measurements": "mesures",
-    "add_patient": "Ajouter un Nouveau Patient"
+    "add_patient": "Ajouter un Nouveau Patient",
+    "count_one": "mesure",
+    "count_other": "mesures"
   },
   "add_patient": {
     "title": "Ajouter un Nouveau Patient",
@@ -37,7 +40,11 @@
     "error_name": "Veuillez entrer le nom du patient",
     "error_dob": "Veuillez entrer la date de naissance",
     "error_dob_format": "Veuillez entrer la date au format JJ/MM/AAAA",
-    "success": "Patient ajouté avec succès"
+    "success": "Patient ajouté avec succès",
+    "full_name": "Nom complet",
+    "date_of_birth": "Date de naissance",
+    "tap_add_photo": "Appuyez pour\najouter une photo",
+    "error_save": "Échec de l'enregistrement du patient"
   },
   "patient_detail": {
     "title": "Détails du Patient",
@@ -47,7 +54,9 @@
     "no_measurements_desc": "Appuyez sur le bouton + pour ajouter une mesure",
     "add_measurement": "Ajouter une Mesure",
     "location": "Emplacement",
-    "notes": "Notes"
+    "notes": "Notes",
+    "delete_title": "Supprimer la mesure",
+    "delete_message": "Supprimer la mesure de {{angle}}° en région {{location}} ?"
   },
   "measurement": {
     "title": "Nouvelle Mesure",
@@ -67,7 +76,15 @@
     "error_calibrate": "Veuillez d'abord calibrer l'appareil",
     "error_start": "Veuillez d'abord commencer la mesure",
     "success": "Mesure enregistrée avec succès",
-    "calibrated": "Appareil calibré à la position actuelle (0°)"
+    "calibrated": "Appareil calibré à la position actuelle (0°)",
+    "spinal_location": "Région rachidienne",
+    "error_sensors": "Impossible d'accéder aux capteurs de l'appareil",
+    "error_save": "Échec de l'enregistrement de la mesure",
+    "severity_normal": "Normale",
+    "severity_mild": "Légère",
+    "severity_moderate": "Modérée",
+    "severity_severe": "Sévère",
+    "severity_surgical": "Chirurgicale"
   },
   "settings": {
     "title": "Paramètres",
@@ -82,5 +99,39 @@
     "zh": "中文 (Chinese)",
     "es": "Español (Spanish)",
     "fr": "Français (French)"
+  },
+  "common": {
+    "ok": "OK",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "error": "Erreur",
+    "latest": "Dernier",
+    "open": "Ouvrir",
+    "unknown_date": "Date non renseignée"
+  },
+  "nav": {
+    "instructions": "Guide d'utilisation",
+    "patients": "Patients",
+    "add_patient": "Nouveau patient",
+    "patient_detail": "Patient",
+    "measurement": "Mesure",
+    "settings": "Paramètres"
+  },
+  "spine": {
+    "cervical_desc": "Région cervicale. Sept vertèbres soutiennent le crâne, protègent la moelle épinière et permettent la plus grande amplitude de mouvement de la tête : rotation, flexion et extension.",
+    "thoracic_desc": "Région dorsale. Douze vertèbres s'articulent avec la cage thoracique, assurant la stabilité du tronc et protégeant le cœur, les poumons et les principaux vaisseaux thoraciques.",
+    "lumbar_desc": "Région lombaire. Cinq grandes vertèbres porteuses supportent l'essentiel du poids du corps et permettent la flexion antérieure et latérale du tronc."
+  },
+  "sidebar": {
+    "display": "Affichage",
+    "language": "Langue",
+    "references": "Références cliniques",
+    "dark_theme": "Thème sombre",
+    "light_theme": "Thème clair",
+    "official_docs": "Documentation officielle",
+    "docs_desc": "Documentation de la plateforme, assistance\net recommandations cliniques",
+    "literature": "Littérature évaluée par les pairs",
+    "paper_title": "Validité de la mesure de l'angle de Cobb",
+    "paper_desc": "European Spine Journal\nSpringer Nature · 2021"
   }
 }

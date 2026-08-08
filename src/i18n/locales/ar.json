@@ -13,7 +13,8 @@
     "step4_title": "الخطوة 4: الحفظ والتتبع",
     "step4_desc": "احفظ القياس لتتبع التقدم بمرور الوقت. اعرض السجل لمقارنة القياسات السابقة.",
     "get_started": "ابدأ",
-    "skip": "تخطي التعليمات"
+    "skip": "تخطي التعليمات",
+    "subtitle": "اتبع هذه الخطوات للبدء"
   },
   "patients": {
     "title": "المرضى",
@@ -21,7 +22,9 @@
     "no_patients_desc": "اضغط على زر + لإضافة مريضك الأول",
     "measurement": "قياس",
     "measurements": "قياسات",
-    "add_patient": "إضافة مريض جديد"
+    "add_patient": "إضافة مريض جديد",
+    "count_one": "قياس",
+    "count_other": "قياسات"
   },
   "add_patient": {
     "title": "إضافة مريض جديد",
@@ -37,7 +40,11 @@
     "error_name": "الرجاء إدخال اسم المريض",
     "error_dob": "الرجاء إدخال تاريخ الميلاد",
     "error_dob_format": "الرجاء إدخال التاريخ بتنسيق DD/MM/YYYY",
-    "success": "تمت إضافة المريض بنجاح"
+    "success": "تمت إضافة المريض بنجاح",
+    "full_name": "الاسم الكامل",
+    "date_of_birth": "تاريخ الميلاد",
+    "tap_add_photo": "اضغط لإضافة\nصورة",
+    "error_save": "تعذّر حفظ المريض"
   },
   "patient_detail": {
     "title": "تفاصيل المريض",
@@ -47,7 +54,9 @@
     "no_measurements_desc": "اضغط على زر + لإضافة قياس",
     "add_measurement": "إضافة قياس",
     "location": "الموقع",
-    "notes": "ملاحظات"
+    "notes": "ملاحظات",
+    "delete_title": "حذف القياس",
+    "delete_message": "هل تريد حذف قياس {{angle}}° في منطقة {{location}}؟"
   },
   "measurement": {
     "title": "قياس جديد",
@@ -67,7 +76,15 @@
     "error_calibrate": "يرجى معايرة الجهاز أولاً",
     "error_start": "يرجى بدء القياس أولاً",
     "success": "تم حفظ القياس بنجاح",
-    "calibrated": "تمت معايرة الجهاز إلى الموضع الحالي (0°)"
+    "calibrated": "تمت معايرة الجهاز إلى الموضع الحالي (0°)",
+    "spinal_location": "موضع العمود الفقري",
+    "error_sensors": "تعذّر الوصول إلى مستشعرات الجهاز",
+    "error_save": "تعذّر حفظ القياس",
+    "severity_normal": "طبيعي",
+    "severity_mild": "خفيف",
+    "severity_moderate": "متوسط",
+    "severity_severe": "شديد",
+    "severity_surgical": "يستدعي الجراحة"
   },
   "settings": {
     "title": "الإعدادات",
@@ -82,5 +99,39 @@
     "zh": "中文 (Chinese)",
     "es": "Español (Spanish)",
     "fr": "Français (French)"
+  },
+  "common": {
+    "ok": "حسناً",
+    "cancel": "إلغاء",
+    "delete": "حذف",
+    "error": "خطأ",
+    "latest": "الأحدث",
+    "open": "فتح",
+    "unknown_date": "التاريخ غير محدد"
+  },
+  "nav": {
+    "instructions": "طريقة الاستخدام",
+    "patients": "المرضى",
+    "add_patient": "مريض جديد",
+    "patient_detail": "المريض",
+    "measurement": "القياس",
+    "settings": "الإعدادات"
+  },
+  "spine": {
+    "cervical_desc": "منطقة الرقبة. سبع فقرات تحمل الجمجمة وتحمي النخاع الشوكي وتتيح أوسع مدى لحركة الرأس من دوران وانثناء وبسط.",
+    "thoracic_desc": "منطقة أعلى الظهر. اثنتا عشرة فقرة تتمفصل مع القفص الصدري لتوفير ثبات الجذع وحماية القلب والرئتين والأوعية الصدرية الرئيسية.",
+    "lumbar_desc": "منطقة أسفل الظهر. خمس فقرات كبيرة حاملة للأثقال تدعم معظم وزن الجسم وتتيح انثناء الجذع للأمام وإلى الجانبين."
+  },
+  "sidebar": {
+    "display": "العرض",
+    "language": "اللغة",
+    "references": "المراجع السريرية",
+    "dark_theme": "المظهر الداكن",
+    "light_theme": "المظهر الفاتح",
+    "official_docs": "الوثائق الرسمية",
+    "docs_desc": "وثائق المنصة والدعم\nوالإرشادات السريرية",
+    "literature": "أدبيات محكّمة",
+    "paper_title": "صدق قياس زاوية كوب",
+    "paper_desc": "European Spine Journal\nSpringer Nature · 2021"
   }
 }

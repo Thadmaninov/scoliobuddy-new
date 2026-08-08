@@ -1,17 +1,25 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, ScrollView, Image, TouchableOpacity, Alert, Platform } from 'react-native';
-import { TextInput, Button, Avatar, Text, useTheme } from 'react-native-paper';
+import { View, StyleSheet, ScrollView, Image, TouchableOpacity, Alert, Platform, Text } from 'react-native';
+import { TextInput } from 'react-native-paper';
+import { LinearGradient } from 'expo-linear-gradient';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import * as ImagePicker from 'expo-image-picker';
 import { patientStorage } from '../utils/storage';
+import { formatDate } from '../utils/date';
 import { Patient } from '../types';
+import { useLanguage } from '../contexts/LanguageContext';
+import { useAppTheme } from '../contexts/ThemeContext';
+import { darkTheme, lightTheme, radius } from '../utils/theme';
 
 interface AddPatientScreenProps {
   navigation: any;
 }
 
 export default function AddPatientScreen({ navigation }: AddPatientScreenProps) {
-  const theme = useTheme();
+  const { t, locale } = useLanguage();
+  const { isDark } = useAppTheme();
+  const theme = isDark ? darkTheme : lightTheme;
+
   const [name, setName] = useState('');
   const [dateOfBirth, setDateOfBirth] = useState<Date>(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
@@ -19,199 +27,177 @@ export default function AddPatientScreen({ navigation }: AddPatientScreenProps) 
   const [loading, setLoading] = useState(false);
 
   const pickImage = async () => {
-    const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
-
-    if (permissionResult.granted === false) {
-      Alert.alert('Permission Required', 'Permission to access camera roll is required!');
-      return;
-    }
-
-    const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      allowsEditing: true,
-      aspect: [1, 1],
-      quality: 0.5,
-    });
-
-    if (!result.canceled) {
-      setProfilePicture(result.assets[0].uri);
-    }
+    const res = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    if (!res.granted) return;
+    const result = await ImagePicker.launchImageLibraryAsync({ allowsEditing: true, aspect: [1, 1], quality: 0.5 });
+    if (!result.canceled) setProfilePicture(result.assets[0].uri);
   };
 
   const takePhoto = async () => {
-    const permissionResult = await ImagePicker.requestCameraPermissionsAsync();
-
-    if (permissionResult.granted === false) {
-      Alert.alert('Permission Required', 'Permission to access camera is required!');
-      return;
-    }
-
-    const result = await ImagePicker.launchCameraAsync({
-      allowsEditing: true,
-      aspect: [1, 1],
-      quality: 0.5,
-    });
-
-    if (!result.canceled) {
-      setProfilePicture(result.assets[0].uri);
-    }
+    const res = await ImagePicker.requestCameraPermissionsAsync();
+    if (!res.granted) return;
+    const result = await ImagePicker.launchCameraAsync({ allowsEditing: true, aspect: [1, 1], quality: 0.5 });
+    if (!result.canceled) setProfilePicture(result.assets[0].uri);
   };
 
   const handleImagePress = () => {
-    Alert.alert(
-      'Select Photo',
-      'Choose an option',
-      [
-        { text: 'Take Photo', onPress: takePhoto },
-        { text: 'Choose from Library', onPress: pickImage },
-        { text: 'Cancel', style: 'cancel' },
-      ]
-    );
+    Alert.alert(t('add_patient.select_photo'), '', [
+      { text: t('add_patient.take_photo'), onPress: takePhoto },
+      { text: t('add_patient.choose_library'), onPress: pickImage },
+      { text: t('add_patient.cancel'), style: 'cancel' },
+    ]);
   };
 
-  const onDateChange = (event: any, selectedDate?: Date) => {
-    if (Platform.OS === 'android') {
-      setShowDatePicker(false);
-    }
-    if (selectedDate) {
-      setDateOfBirth(selectedDate);
-    }
-  };
-
-  const formatDate = (date: Date): string => {
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
-    const year = date.getFullYear();
-    return `${month}/${day}/${year}`;
+  /** Unambiguous, locale-independent form for persistence. */
+  const toStorageDate = (date: Date) => {
+    const m = String(date.getMonth() + 1).padStart(2, '0');
+    const d = String(date.getDate()).padStart(2, '0');
+    return `${date.getFullYear()}-${m}-${d}`;
   };
 
   const handleSave = async () => {
-    if (!name.trim()) {
-      Alert.alert('Error', 'Please enter patient name');
-      return;
-    }
-
+    if (!name.trim()) { Alert.alert('', t('add_patient.error_name')); return; }
     setLoading(true);
-
     try {
       const newPatient: Patient = {
         id: Date.now().toString(),
         name: name.trim(),
-        dateOfBirth: formatDate(dateOfBirth),
+        dateOfBirth: toStorageDate(dateOfBirth),
         profilePicture,
         measurements: [],
         createdAt: new Date().toISOString(),
       };
-
       await patientStorage.savePatient(newPatient);
-      Alert.alert('Success', 'Patient added successfully', [
-        { text: 'OK', onPress: () => navigation.goBack() },
+      Alert.alert('', t('add_patient.success'), [
+        { text: t('common.ok'), onPress: () => navigation.goBack() },
       ]);
-    } catch (error) {
-      Alert.alert('Error', 'Failed to save patient');
+    } catch {
+      Alert.alert(t('common.error'), t('add_patient.error_save'));
     } finally {
       setLoading(false);
     }
   };
 
+  const bg = theme.colors.background;
+  const surface = isDark ? '#0f2744' : '#ffffff';
+  const border = theme.colors.border;
+  const text = theme.colors.onBackground;
+  const muted = theme.colors.textSecondary;
+  const accent = '#1a4fa0';
+
   return (
-    <ScrollView style={[styles.container, { backgroundColor: theme.colors.background }]}>
-      <View style={styles.content}>
-        <TouchableOpacity onPress={handleImagePress} style={styles.avatarContainer}>
+    <ScrollView style={[styles.container, { backgroundColor: bg }]} contentContainerStyle={{ paddingBottom: 48 }} showsVerticalScrollIndicator={false}>
+
+      {/* Avatar picker */}
+      <TouchableOpacity onPress={handleImagePress} style={styles.avatarSection} activeOpacity={0.8}>
+        <LinearGradient colors={['#0a1628', '#0f2744']} style={styles.avatarBg}>
           {profilePicture ? (
-            <Image source={{ uri: profilePicture }} style={styles.avatarImage} />
+            <Image source={{ uri: profilePicture }} style={styles.avatar} />
           ) : (
-            <Avatar.Icon size={120} icon="camera" style={styles.avatarPlaceholder} />
+            <View style={[styles.avatarPlaceholder, { borderColor: 'rgba(255,255,255,0.2)' }]}>
+              <Text style={styles.avatarPlaceholderText}>
+                {t('add_patient.tap_add_photo').toUpperCase()}
+              </Text>
+            </View>
           )}
-          <Text variant="bodySmall" style={styles.avatarText}>
-            Tap to {profilePicture ? 'change' : 'add'} photo
+        </LinearGradient>
+      </TouchableOpacity>
+
+      <View style={styles.form}>
+        {/* Name field */}
+        <View style={styles.fieldGroup}>
+          <Text style={[styles.fieldLabel, { color: muted }]}>
+            {t('add_patient.full_name').toUpperCase()}
           </Text>
-        </TouchableOpacity>
+          <TextInput
+            value={name}
+            onChangeText={setName}
+            mode="flat"
+            style={[styles.input, { backgroundColor: surface }]}
+            textColor={text}
+            underlineColor="transparent"
+            activeUnderlineColor={accent}
+            placeholder={t('add_patient.name')}
+            placeholderTextColor={muted}
+          />
+        </View>
 
-        <TextInput
-          label="Patient Name"
-          value={name}
-          onChangeText={setName}
-          mode="outlined"
-          style={styles.input}
-        />
-
-        <TouchableOpacity onPress={() => setShowDatePicker(true)}>
-          <View pointerEvents="none">
-            <TextInput
-              label="Date of Birth"
-              value={formatDate(dateOfBirth)}
-              mode="outlined"
-              style={styles.input}
-              editable={false}
-              right={<TextInput.Icon icon="calendar" />}
-            />
-          </View>
-        </TouchableOpacity>
+        {/* DOB field */}
+        <View style={styles.fieldGroup}>
+          <Text style={[styles.fieldLabel, { color: muted }]}>
+            {t('add_patient.date_of_birth').toUpperCase()}
+          </Text>
+          <TouchableOpacity onPress={() => setShowDatePicker(true)}>
+            <View style={[styles.dobRow, { backgroundColor: surface }]}>
+              <Text style={[styles.dobText, { color: text }]}>
+                {formatDate(dateOfBirth, locale)}
+              </Text>
+              <Text style={[styles.dobIcon, { color: muted }]}>▼</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
 
         {showDatePicker && (
           <DateTimePicker
             value={dateOfBirth}
             mode="date"
             display={Platform.OS === 'ios' ? 'spinner' : 'default'}
-            onChange={onDateChange}
+            onChange={(_, d) => {
+              if (Platform.OS === 'android') setShowDatePicker(false);
+              if (d) setDateOfBirth(d);
+            }}
             maximumDate={new Date()}
-            textColor="#ffffffff"
-            accentColor="#fdfeffff"
+            textColor="#ffffff"
+            accentColor={accent}
           />
         )}
 
-        <Button
-          mode="contained"
-          onPress={handleSave}
-          loading={loading}
-          disabled={loading}
-          style={styles.button}
-        >
-          Save Patient
-        </Button>
+        {/* Save button */}
+        <TouchableOpacity onPress={handleSave} disabled={loading} style={{ opacity: loading ? 0.6 : 1 }}>
+          <LinearGradient colors={['#1a4fa0', '#0f2f6e']} style={styles.saveBtn} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}>
+            <Text style={styles.saveBtnText}>{loading ? '...' : t('add_patient.save')}</Text>
+          </LinearGradient>
+        </TouchableOpacity>
 
-        <Button
-          mode="outlined"
-          onPress={() => navigation.goBack()}
-          disabled={loading}
-          style={styles.button}
-        >
-          Cancel
-        </Button>
+        <TouchableOpacity onPress={() => navigation.goBack()} style={[styles.cancelBtn, { borderColor: border }]} disabled={loading}>
+          <Text style={[styles.cancelText, { color: muted }]}>{t('add_patient.cancel')}</Text>
+        </TouchableOpacity>
       </View>
     </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  content: {
-    padding: 20,
-  },
-  avatarContainer: {
-    alignItems: 'center',
-    marginBottom: 30,
-  },
-  avatarImage: {
-    width: 120,
-    height: 120,
-    borderRadius: 60,
-  },
+  container: { flex: 1 },
+  avatarSection: { height: 220 },
+  avatarBg: { flex: 1, alignItems: 'center', justifyContent: 'center' },
+  avatar: { width: 108, height: 108, borderRadius: radius.xl },
   avatarPlaceholder: {
-    backgroundColor: '#ddd',
+    width: 108, height: 108, borderRadius: radius.xl,
+    borderWidth: 1, alignItems: 'center', justifyContent: 'center',
   },
-  avatarText: {
-    marginTop: 10,
-    fontFamily: 'KumbhSans_400Regular',
+  avatarPlaceholderText: {
+    color: 'rgba(255,255,255,0.4)', fontSize: 11,
+    fontFamily: 'SpaceGrotesk_600SemiBold', textAlign: 'center', letterSpacing: 1,
+  },
+  form: { padding: 24, gap: 20 },
+  fieldGroup: { gap: 8 },
+  fieldLabel: {
+    fontSize: 10, fontFamily: 'SpaceGrotesk_700Bold', letterSpacing: 1.5,
   },
   input: {
-    marginBottom: 15,
-    fontFamily: 'KumbhSans_400Regular',
+    borderRadius: radius.md, fontSize: 16,
+    fontFamily: 'SpaceGrotesk_400Regular',
+    paddingHorizontal: 0,
   },
-  button: {
-    marginTop: 10,
+  dobRow: {
+    flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
+    borderRadius: radius.md, paddingHorizontal: 16, paddingVertical: 16,
   },
+  dobText: { fontSize: 16, fontFamily: 'SpaceGrotesk_400Regular' },
+  dobIcon: { fontSize: 12 },
+  saveBtn: { borderRadius: radius.md, paddingVertical: 17, alignItems: 'center' },
+  saveBtnText: { color: '#fff', fontSize: 16, fontFamily: 'SpaceGrotesk_600SemiBold' },
+  cancelBtn: { borderRadius: radius.md, paddingVertical: 15, alignItems: 'center', borderWidth: 1 },
+  cancelText: { fontSize: 15, fontFamily: 'SpaceGrotesk_500Medium' },
 });

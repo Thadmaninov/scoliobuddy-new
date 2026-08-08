@@ -53,6 +53,18 @@ export const patientStorage = {
     }
   },
 
+  async deleteMeasurement(patientId: string, measurementId: string): Promise<void> {
+    try {
+      const patient = await this.getPatient(patientId);
+      if (!patient) throw new Error('Patient not found');
+      patient.measurements = patient.measurements.filter(m => m.id !== measurementId);
+      await this.savePatient(patient);
+    } catch (error) {
+      console.error('Error deleting measurement:', error);
+      throw error;
+    }
+  },
+
   async addMeasurement(patientId: string, measurement: Measurement): Promise<void> {
     try {
       const patient = await this.getPatient(patientId);

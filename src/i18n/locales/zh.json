@@ -4,57 +4,66 @@
   "loading": "加载中...",
   "instructions": {
     "title": "如何使用 ScolioBuddy",
-    "step1_title": "步骤 1：添加患者",
-    "step1_desc": "首先添加患者档案，包括姓名、出生日期和可选的个人照片。",
-    "step2_title": "步骤 2：进行测量",
-    "step2_desc": "选择患者并点击"添加测量"。使用3D打印的脊柱侧弯测量仪和手机测量脊柱弯曲度。",
-    "step3_title": "步骤 3：放置设备",
-    "step3_desc": "将手机放入脊柱侧弯测量仪设备中，并放置在患者背部。应用程序将实时显示角度。",
-    "step4_title": "步骤 4：保存和跟踪",
-    "step4_desc": "保存测量值以跟踪随时间的进展。查看历史记录以比较以前的测量值。",
-    "get_started": "开始",
-    "skip": "跳过说明"
+    "step1_title": "第1步：添加患者",
+    "step1_desc": "首先添加患者档案，包括姓名、出生日期和可选的照片。",
+    "step2_title": "第2步：进行测量",
+    "step2_desc": "选择患者并点击「添加测量」。使用带手机的3D打印脊柱测量仪测量脊柱曲度。",
+    "step3_title": "第3步：放置设备",
+    "step3_desc": "将手机放入测量设备中，并将其放在患者背部。应用程序将实时显示角度。",
+    "step4_title": "第4步：保存和跟踪",
+    "step4_desc": "保存测量结果以跟踪随时间的进展。查看历史记录以比较之前的测量结果。",
+    "get_started": "开始使用",
+    "skip": "跳过说明",
+    "subtitle": "按以下步骤开始使用"
   },
   "patients": {
     "title": "患者",
-    "no_patients": "还没有患者",
+    "no_patients": "暂无患者",
     "no_patients_desc": "点击 + 按钮添加您的第一位患者",
-    "measurement": "测量",
-    "measurements": "测量",
-    "add_patient": "添加新患者"
+    "measurement": "次测量",
+    "measurements": "次测量",
+    "add_patient": "添加新患者",
+    "count_one": "次测量",
+    "count_other": "次测量"
   },
   "add_patient": {
     "title": "添加新患者",
     "name": "患者姓名",
-    "dob": "出生日期 (MM/DD/YYYY)",
+    "dob": "出生日期 (YYYY/MM/DD)",
     "tap_photo": "点击添加照片",
     "change_photo": "点击更改照片",
     "save": "保存患者",
     "cancel": "取消",
     "select_photo": "选择照片",
     "take_photo": "拍照",
-    "choose_library": "从图库选择",
+    "choose_library": "从相册选择",
     "error_name": "请输入患者姓名",
     "error_dob": "请输入出生日期",
-    "error_dob_format": "请以 MM/DD/YYYY 格式输入日期",
-    "success": "患者添加成功"
+    "error_dob_format": "请以 YYYY/MM/DD 格式输入日期",
+    "success": "患者添加成功",
+    "full_name": "姓名",
+    "date_of_birth": "出生日期",
+    "tap_add_photo": "点按\n添加照片",
+    "error_save": "保存患者失败"
   },
   "patient_detail": {
     "title": "患者详情",
     "dob": "出生日期",
     "history": "测量历史",
-    "no_measurements": "还没有测量",
-    "no_measurements_desc": "点击 + 按钮添加测量",
+    "no_measurements": "暂无测量记录",
+    "no_measurements_desc": "点击 + 按钮添加测量记录",
     "add_measurement": "添加测量",
     "location": "位置",
-    "notes": "备注"
+    "notes": "备注",
+    "delete_title": "删除测量记录",
+    "delete_message": "确定要删除 {{location}} {{angle}}° 的测量记录吗？"
   },
   "measurement": {
     "title": "新测量",
     "scoliometer": "脊柱侧弯测量",
     "not_calibrated": "未校准",
     "measuring": "测量中...",
-    "calibrate": "校准设备（设置为 0°）",
+    "calibrate": "校准设备（设为0°）",
     "recalibrate": "重新校准",
     "start": "开始测量",
     "location": "脊柱位置",
@@ -67,7 +76,15 @@
     "error_calibrate": "请先校准设备",
     "error_start": "请先开始测量",
     "success": "测量保存成功",
-    "calibrated": "设备已校准到当前位置（0°）"
+    "calibrated": "设备已校准到当前位置（0°）",
+    "spinal_location": "脊柱部位",
+    "error_sensors": "无法访问设备传感器",
+    "error_save": "保存测量失败",
+    "severity_normal": "正常",
+    "severity_mild": "轻度",
+    "severity_moderate": "中度",
+    "severity_severe": "重度",
+    "severity_surgical": "需手术"
   },
   "settings": {
     "title": "设置",
@@ -82,5 +99,39 @@
     "zh": "中文 (Chinese)",
     "es": "Español (Spanish)",
     "fr": "Français (French)"
+  },
+  "common": {
+    "ok": "确定",
+    "cancel": "取消",
+    "delete": "删除",
+    "error": "错误",
+    "latest": "最新",
+    "open": "打开",
+    "unknown_date": "未设置日期"
+  },
+  "nav": {
+    "instructions": "使用说明",
+    "patients": "患者",
+    "add_patient": "新增患者",
+    "patient_detail": "患者",
+    "measurement": "测量",
+    "settings": "设置"
+  },
+  "spine": {
+    "cervical_desc": "颈部区域。七节椎骨支撑颅骨、保护脊髓，并使头部具备最大的活动范围——旋转、前屈与后伸。",
+    "thoracic_desc": "中背部区域。十二节椎骨与肋骨相连，为躯干提供稳定性，并保护心脏、肺部及主要胸腔血管。",
+    "lumbar_desc": "下背部区域。五节大型承重椎骨支撑身体的大部分重量，并使躯干能够前屈和侧弯。"
+  },
+  "sidebar": {
+    "display": "显示",
+    "language": "语言",
+    "references": "临床参考文献",
+    "dark_theme": "深色主题",
+    "light_theme": "浅色主题",
+    "official_docs": "官方文档",
+    "docs_desc": "平台文档、技术支持\n与临床指南",
+    "literature": "同行评审文献",
+    "paper_title": "Cobb 角测量的有效性",
+    "paper_desc": "European Spine Journal\nSpringer Nature · 2021"
   }
 }

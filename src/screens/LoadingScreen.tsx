@@ -1,118 +1,103 @@
-import React, { useEffect } from 'react';
-import { View, StyleSheet } from 'react-native';
-import { ActivityIndicator, Text, useTheme } from 'react-native-paper';
+import React, { useEffect, useRef } from 'react';
+import { View, Text, StyleSheet, Animated, Dimensions, Easing } from 'react-native';
+import AppLogo from '../components/AppLogo';
+import { useLanguage } from '../contexts/LanguageContext';
+
+const { width: W } = Dimensions.get('window');
 
 interface LoadingScreenProps {
   navigation: any;
 }
 
 export default function LoadingScreen({ navigation }: LoadingScreenProps) {
-  const theme = useTheme();
+  const { t } = useLanguage();
+
+  const opacity    = useRef(new Animated.Value(0)).current;
+  const logoY      = useRef(new Animated.Value(10)).current;
+  const barWidth   = useRef(new Animated.Value(0)).current;
+  const screenOp   = useRef(new Animated.Value(1)).current;
 
   useEffect(() => {
+    // 1 — content fades + lifts in
+    Animated.parallel([
+      Animated.timing(opacity, {
+        toValue: 1,
+        duration: 600,
+        easing: Easing.out(Easing.quad),
+        useNativeDriver: true,
+      }),
+      Animated.timing(logoY, {
+        toValue: 0,
+        duration: 600,
+        easing: Easing.out(Easing.quad),
+        useNativeDriver: true,
+      }),
+    ]).start();
+
+    // 2 — progress bar fills over 1.8s
+    Animated.timing(barWidth, {
+      toValue: W - 48,
+      duration: 1800,
+      easing: Easing.inOut(Easing.quad),
+      useNativeDriver: false,
+    }).start();
+
+    // 3 — fade to black, then navigate
     const timer = setTimeout(() => {
-      navigation.replace('Main');
-    }, 2500);
+      Animated.timing(screenOp, {
+        toValue: 0,
+        duration: 400,
+        easing: Easing.in(Easing.quad),
+        useNativeDriver: true,
+      }).start(() => navigation.replace('Instructions'));
+    }, 2100);
 
     return () => clearTimeout(timer);
-  }, [navigation]);
+  }, []);
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.colors.background }]}>
-      {/* Logo Circle */}
-      <View style={[styles.logoContainer, { borderColor: theme.colors.secondary }]}>
-        <View style={[styles.logoInner, { backgroundColor: theme.colors.primary }]}>
-          <Text style={[styles.logoText, { fontFamily: 'KumbhSans_700Bold' }]}>
-            SB
-          </Text>
-        </View>
+    <Animated.View style={[styles.root, { opacity: screenOp }]}>
+      <Animated.View style={[styles.center, { opacity, transform: [{ translateY: logoY }] }]}>
+        <AppLogo size={52} color="#ffffff" accentColor="#4a7fd4" />
+        <Text style={styles.name}>ScolioBuddy</Text>
+      </Animated.View>
+
+      {/* Progress bar — bottom of screen */}
+      <View style={styles.barTrack}>
+        <Animated.View style={[styles.barFill, { width: barWidth }]} />
       </View>
-
-      {/* App Title */}
-      <Text
-        variant="headlineLarge"
-        style={[styles.title, {
-          color: theme.colors.onBackground,
-          fontFamily: 'KumbhSans_700Bold'
-        }]}
-      >
-        ScolioBuddy
-      </Text>
-
-      {/* Subtitle */}
-      <Text
-        variant="titleMedium"
-        style={[styles.subtitle, {
-          color: theme.colors.textSecondary,
-          fontFamily: 'KumbhSans_400Regular'
-        }]}
-      >
-        Professional Scoliometer Assessment
-      </Text>
-
-      {/* Loading Indicator */}
-      <ActivityIndicator
-        size="large"
-        color={theme.colors.secondary}
-        style={styles.loader}
-      />
-
-      {/* Version */}
-      <Text
-        variant="bodySmall"
-        style={[styles.version, {
-          color: theme.colors.textSecondary,
-          fontFamily: 'KumbhSans_400Regular'
-        }]}
-      >
-        Version 1.0.0
-      </Text>
-    </View>
+    </Animated.View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  root: {
     flex: 1,
-    justifyContent: 'center',
+    backgroundColor: '#030609',
     alignItems: 'center',
-    padding: 20,
-  },
-  logoContainer: {
-    width: 120,
-    height: 120,
-    borderRadius: 60,
-    borderWidth: 3,
     justifyContent: 'center',
+  },
+  center: {
     alignItems: 'center',
-    marginBottom: 30,
+    gap: 20,
   },
-  logoInner: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
+  name: {
+    fontSize: 24,
+    color: '#8aabcc',
+    fontFamily: 'SpaceGrotesk_300Light',
+    letterSpacing: 7,
+    textTransform: 'uppercase',
   },
-  logoText: {
-    fontSize: 40,
-    color: '#FFFFFF',
-    letterSpacing: 2,
-  },
-  title: {
-    marginBottom: 8,
-    letterSpacing: 1,
-  },
-  subtitle: {
-    marginBottom: 40,
-    textAlign: 'center',
-    letterSpacing: 0.5,
-  },
-  loader: {
-    marginTop: 20,
-  },
-  version: {
+  barTrack: {
     position: 'absolute',
-    bottom: 40,
+    bottom: 48,
+    left: 24,
+    right: 24,
+    height: 1,
+    backgroundColor: 'rgba(255,255,255,0.05)',
+  },
+  barFill: {
+    height: 1,
+    backgroundColor: 'rgba(37,99,235,0.6)',
   },
 });

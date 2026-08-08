@@ -13,7 +13,8 @@
     "step4_title": "Paso 4: Guardar y Rastrear",
     "step4_desc": "Guarde la medición para rastrear el progreso a lo largo del tiempo. Vea el historial para comparar mediciones anteriores.",
     "get_started": "Comenzar",
-    "skip": "Saltar Instrucciones"
+    "skip": "Saltar Instrucciones",
+    "subtitle": "Sigue estos pasos para empezar"
   },
   "patients": {
     "title": "Pacientes",
@@ -21,7 +22,9 @@
     "no_patients_desc": "Toque el botón + para agregar su primer paciente",
     "measurement": "medición",
     "measurements": "mediciones",
-    "add_patient": "Agregar Nuevo Paciente"
+    "add_patient": "Agregar Nuevo Paciente",
+    "count_one": "medición",
+    "count_other": "mediciones"
   },
   "add_patient": {
     "title": "Agregar Nuevo Paciente",
@@ -37,7 +40,11 @@
     "error_name": "Por favor ingrese el nombre del paciente",
     "error_dob": "Por favor ingrese la fecha de nacimiento",
     "error_dob_format": "Por favor ingrese la fecha en formato DD/MM/AAAA",
-    "success": "Paciente agregado exitosamente"
+    "success": "Paciente agregado exitosamente",
+    "full_name": "Nombre completo",
+    "date_of_birth": "Fecha de nacimiento",
+    "tap_add_photo": "Toca para\nañadir foto",
+    "error_save": "No se pudo guardar el paciente"
   },
   "patient_detail": {
     "title": "Detalles del Paciente",
@@ -47,7 +54,9 @@
     "no_measurements_desc": "Toque el botón + para agregar una medición",
     "add_measurement": "Agregar Medición",
     "location": "Ubicación",
-    "notes": "Notas"
+    "notes": "Notas",
+    "delete_title": "Eliminar medición",
+    "delete_message": "¿Eliminar la medición de {{angle}}° en {{location}}?"
   },
   "measurement": {
     "title": "Nueva Medición",
@@ -67,7 +76,15 @@
     "error_calibrate": "Por favor calibre el dispositivo primero",
     "error_start": "Por favor inicie la medición primero",
     "success": "Medición guardada exitosamente",
-    "calibrated": "Dispositivo calibrado a la posición actual (0°)"
+    "calibrated": "Dispositivo calibrado a la posición actual (0°)",
+    "spinal_location": "Región de la columna",
+    "error_sensors": "No se pudo acceder a los sensores del dispositivo",
+    "error_save": "No se pudo guardar la medición",
+    "severity_normal": "Normal",
+    "severity_mild": "Leve",
+    "severity_moderate": "Moderada",
+    "severity_severe": "Grave",
+    "severity_surgical": "Quirúrgica"
   },
   "settings": {
     "title": "Configuración",
@@ -82,5 +99,39 @@
     "zh": "中文 (Chinese)",
     "es": "Español (Spanish)",
     "fr": "Français (French)"
+  },
+  "common": {
+    "ok": "Aceptar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "error": "Error",
+    "latest": "Último",
+    "open": "Abrir",
+    "unknown_date": "Fecha no definida"
+  },
+  "nav": {
+    "instructions": "Cómo usar",
+    "patients": "Pacientes",
+    "add_patient": "Nuevo paciente",
+    "patient_detail": "Paciente",
+    "measurement": "Medición",
+    "settings": "Ajustes"
+  },
+  "spine": {
+    "cervical_desc": "Región del cuello. Siete vértebras que sostienen el cráneo, protegen la médula espinal y permiten el mayor rango de movimiento de la cabeza: rotación, flexión y extensión.",
+    "thoracic_desc": "Región media de la espalda. Doce vértebras se articulan con la caja torácica, aportando estabilidad al tronco y protegiendo el corazón, los pulmones y los grandes vasos torácicos.",
+    "lumbar_desc": "Región lumbar. Cinco vértebras grandes que soportan la mayor parte del peso corporal y permiten la flexión anterior y lateral del tronco."
+  },
+  "sidebar": {
+    "display": "Pantalla",
+    "language": "Idioma",
+    "references": "Referencias clínicas",
+    "dark_theme": "Tema oscuro",
+    "light_theme": "Tema claro",
+    "official_docs": "Documentación oficial",
+    "docs_desc": "Documentación de la plataforma, soporte\ny guías clínicas",
+    "literature": "Literatura revisada por pares",
+    "paper_title": "Validez de la medición del ángulo de Cobb",
+    "paper_desc": "European Spine Journal\nSpringer Nature · 2021"
   }
 }

@@ -13,7 +13,8 @@
     "step4_title": "Step 4: Save & Track",
     "step4_desc": "Save the measurement to track progress over time. View history to compare previous measurements.",
     "get_started": "Get Started",
-    "skip": "Skip Instructions"
+    "skip": "Skip Instructions",
+    "subtitle": "Follow these steps to get started"
   },
   "patients": {
     "title": "Patients",
@@ -21,7 +22,9 @@
     "no_patients_desc": "Tap the + button to add your first patient",
     "measurement": "measurement",
     "measurements": "measurements",
-    "add_patient": "Add New Patient"
+    "add_patient": "Add New Patient",
+    "count_one": "measurement",
+    "count_other": "measurements"
   },
   "add_patient": {
     "title": "Add New Patient",
@@ -37,7 +40,11 @@
     "error_name": "Please enter patient name",
     "error_dob": "Please enter date of birth",
     "error_dob_format": "Please enter date in MM/DD/YYYY format",
-    "success": "Patient added successfully"
+    "success": "Patient added successfully",
+    "full_name": "Full Name",
+    "date_of_birth": "Date of Birth",
+    "tap_add_photo": "Tap to\nadd photo",
+    "error_save": "Failed to save patient"
   },
   "patient_detail": {
     "title": "Patient Details",
@@ -47,7 +54,9 @@
     "no_measurements_desc": "Tap the + button to add a measurement",
     "add_measurement": "Add Measurement",
     "location": "Location",
-    "notes": "Notes"
+    "notes": "Notes",
+    "delete_title": "Delete Measurement",
+    "delete_message": "Remove the {{angle}}° {{location}} reading?"
   },
   "measurement": {
     "title": "New Measurement",
@@ -67,7 +76,15 @@
     "error_calibrate": "Please calibrate the device first",
     "error_start": "Please start measurement first",
     "success": "Measurement saved successfully",
-    "calibrated": "Device calibrated to current position (0°)"
+    "calibrated": "Device calibrated to current position (0°)",
+    "spinal_location": "Spinal Location",
+    "error_sensors": "Failed to access device sensors",
+    "error_save": "Failed to save measurement",
+    "severity_normal": "Normal",
+    "severity_mild": "Mild",
+    "severity_moderate": "Moderate",
+    "severity_severe": "Severe",
+    "severity_surgical": "Surgical"
   },
   "settings": {
     "title": "Settings",
@@ -82,5 +99,39 @@
     "zh": "中文 (Chinese)",
     "es": "Español (Spanish)",
     "fr": "Français (French)"
+  },
+  "common": {
+    "ok": "OK",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "error": "Error",
+    "latest": "Latest",
+    "open": "Open",
+    "unknown_date": "Date not set"
+  },
+  "nav": {
+    "instructions": "How to Use",
+    "patients": "Patients",
+    "add_patient": "New Patient",
+    "patient_detail": "Patient",
+    "measurement": "Measurement",
+    "settings": "Settings"
+  },
+  "spine": {
+    "cervical_desc": "The neck region. Seven vertebrae that cradle the skull, protect the spinal cord, and enable the widest range of head movement — rotation, flexion, and extension.",
+    "thoracic_desc": "The mid-back region. Twelve vertebrae articulate with the rib cage, providing trunk stability and protecting the heart, lungs, and major thoracic vessels.",
+    "lumbar_desc": "The lower back region. Five large, load-bearing vertebrae support the majority of body weight and enable forward and lateral bending of the trunk."
+  },
+  "sidebar": {
+    "display": "Display",
+    "language": "Language",
+    "references": "Clinical References",
+    "dark_theme": "Dark theme",
+    "light_theme": "Light theme",
+    "official_docs": "Official Documentation",
+    "docs_desc": "Platform documentation, support\nand clinical guidelines",
+    "literature": "Peer-Reviewed Literature",
+    "paper_title": "Cobb Angle Measurement Validity",
+    "paper_desc": "European Spine Journal\nSpringer Nature · 2021"
   }
 }

@@ -1,8 +1,16 @@
+export type SpineRegion = 'cervical' | 'thoracic' | 'lumbar';
+
 export interface Measurement {
   id: string;
   date: string;
   angle: number;
-  location: string; // e.g., "Thoracic", "Lumbar"
+  /**
+   * Human-readable label captured at save time. Kept for records written
+   * before `locationKey` existed — prefer `locationKey` when present so the
+   * label follows the active language.
+   */
+  location: string;
+  locationKey?: SpineRegion;
   notes?: string;
 }
 

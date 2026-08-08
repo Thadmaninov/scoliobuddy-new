@@ -13,7 +13,8 @@
     "step4_title": "ステップ4：保存と追跡",
     "step4_desc": "測定を保存して、時間の経過とともに進捗を追跡します。履歴を表示して以前の測定値と比較します。",
     "get_started": "始める",
-    "skip": "説明をスキップ"
+    "skip": "説明をスキップ",
+    "subtitle": "次の手順で始めましょう"
   },
   "patients": {
     "title": "患者",
@@ -21,7 +22,9 @@
     "no_patients_desc": "+ボタンをタップして最初の患者を追加します",
     "measurement": "測定",
     "measurements": "測定",
-    "add_patient": "新しい患者を追加"
+    "add_patient": "新しい患者を追加",
+    "count_one": "件の測定",
+    "count_other": "件の測定"
   },
   "add_patient": {
     "title": "新しい患者を追加",
@@ -37,7 +40,11 @@
     "error_name": "患者名を入力してください",
     "error_dob": "生年月日を入力してください",
     "error_dob_format": "MM/DD/YYYY形式で日付を入力してください",
-    "success": "患者が正常に追加されました"
+    "success": "患者が正常に追加されました",
+    "full_name": "氏名",
+    "date_of_birth": "生年月日",
+    "tap_add_photo": "タップして\n写真を追加",
+    "error_save": "患者の保存に失敗しました"
   },
   "patient_detail": {
     "title": "患者の詳細",
@@ -47,7 +54,9 @@
     "no_measurements_desc": "+ボタンをタップして測定を追加します",
     "add_measurement": "測定を追加",
     "location": "場所",
-    "notes": "メモ"
+    "notes": "メモ",
+    "delete_title": "測定を削除",
+    "delete_message": "{{location}} {{angle}}° の測定記録を削除しますか？"
   },
   "measurement": {
     "title": "新しい測定",
@@ -67,7 +76,15 @@
     "error_calibrate": "最初にデバイスをキャリブレートしてください",
     "error_start": "最初に測定を開始してください",
     "success": "測定が正常に保存されました",
-    "calibrated": "デバイスが現在の位置にキャリブレートされました (0°)"
+    "calibrated": "デバイスが現在の位置にキャリブレートされました (0°)",
+    "spinal_location": "脊椎の部位",
+    "error_sensors": "デバイスのセンサーにアクセスできません",
+    "error_save": "測定の保存に失敗しました",
+    "severity_normal": "正常",
+    "severity_mild": "軽度",
+    "severity_moderate": "中等度",
+    "severity_severe": "重度",
+    "severity_surgical": "手術適応"
   },
   "settings": {
     "title": "設定",
@@ -82,5 +99,39 @@
     "zh": "中文 (Chinese)",
     "es": "Español (Spanish)",
     "fr": "Français (French)"
+  },
+  "common": {
+    "ok": "OK",
+    "cancel": "キャンセル",
+    "delete": "削除",
+    "error": "エラー",
+    "latest": "最新",
+    "open": "開く",
+    "unknown_date": "日付が未設定です"
+  },
+  "nav": {
+    "instructions": "使い方",
+    "patients": "患者",
+    "add_patient": "新規患者",
+    "patient_detail": "患者",
+    "measurement": "測定",
+    "settings": "設定"
+  },
+  "spine": {
+    "cervical_desc": "首の領域。7個の椎骨が頭蓋骨を支え、脊髄を保護し、回旋・前屈・後屈といった最も広い可動域を可能にします。",
+    "thoracic_desc": "背中の中央部。12個の椎骨が肋骨と連結し、体幹を安定させるとともに心臓・肺・主要な胸部血管を保護します。",
+    "lumbar_desc": "腰部の領域。5個の大きな荷重支持椎骨が体重の大部分を支え、体幹の前屈と側屈を可能にします。"
+  },
+  "sidebar": {
+    "display": "表示",
+    "language": "言語",
+    "references": "臨床参考資料",
+    "dark_theme": "ダークテーマ",
+    "light_theme": "ライトテーマ",
+    "official_docs": "公式ドキュメント",
+    "docs_desc": "プラットフォームの文書・サポート\nおよび臨床ガイドライン",
+    "literature": "査読済み文献",
+    "paper_title": "Cobb 角測定の妥当性",
+    "paper_desc": "European Spine Journal\nSpringer Nature · 2021"
   }
 }

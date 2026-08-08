@@ -1,69 +1,77 @@
 import React, { useState, useCallback } from 'react';
-import { View, StyleSheet, FlatList, Image } from 'react-native';
-import { Text, FAB, Card, Avatar, useTheme } from 'react-native-paper';
+import { View, StyleSheet, FlatList, Image, TouchableOpacity, Text } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import { useFocusEffect } from '@react-navigation/native';
 import { patientStorage } from '../utils/storage';
 import { Patient } from '../types';
-import { professionalTheme } from '../utils/theme'
+import { useLanguage } from '../contexts/LanguageContext';
+import { useAppTheme } from '../contexts/ThemeContext';
+import { darkTheme, lightTheme, radius } from '../utils/theme';
+import { formatDate } from '../utils/date';
 
 interface PatientListScreenProps {
   navigation: any;
 }
 
 export default function PatientListScreen({ navigation }: PatientListScreenProps) {
-  const theme = useTheme();
+  const { t, locale } = useLanguage();
+  const { isDark } = useAppTheme();
+  const theme = isDark ? darkTheme : lightTheme;
   const [patients, setPatients] = useState<Patient[]>([]);
 
-  const loadPatients = async () => {
-    const data = await patientStorage.getAllPatients();
-    setPatients(data);
-  };
+  useFocusEffect(useCallback(() => {
+    patientStorage.getAllPatients().then(setPatients);
+  }, []));
 
-  useFocusEffect(
-    useCallback(() => {
-      loadPatients();
-    }, [])
-  );
+  const cardBg = isDark ? '#0f2744' : '#ffffff';
+  const accent = '#1a4fa0';
 
-  const renderPatient = ({ item }: { item: Patient }) => (
-    <Card
-      style={styles.card}
+  const renderPatient = ({ item, index }: { item: Patient; index: number }) => (
+    <TouchableOpacity
+      style={[styles.card, { backgroundColor: cardBg }]}
       onPress={() => navigation.navigate('PatientDetail', { patientId: item.id })}
+      activeOpacity={0.75}
     >
-      <Card.Content style={styles.cardContent}>
-        {item.profilePicture ? (
-          <Image source={{ uri: item.profilePicture }} style={styles.avatar} />
-        ) : (
-          <Avatar.Text
-            size={60}
-            label={item.name.substring(0, 2).toUpperCase()}
-            style={styles.avatar}
-          />
-        )}
-        <View style={styles.patientInfo}>
-          <Text variant="titleMedium" style={styles.patientName}>
-            {item.name}
-          </Text>
-          <Text variant="bodySmall" style={styles.patientDOB}>
-            DOB: {new Date(item.dateOfBirth).toLocaleDateString()}
-          </Text>
-          <Text variant="bodySmall" style={styles.measurementCount}>
-            {item.measurements.length} measurement{item.measurements.length !== 1 ? 's' : ''}
-          </Text>
+      <View style={[styles.indexBadge, { backgroundColor: accent + '22' }]}>
+        <Text style={[styles.indexNum, { color: accent }]}>{String(index + 1).padStart(2, '0')}</Text>
+      </View>
+
+      {item.profilePicture ? (
+        <Image source={{ uri: item.profilePicture }} style={styles.avatar} />
+      ) : (
+        <View style={[styles.avatarCircle, { backgroundColor: accent }]}>
+          <Text style={styles.avatarInitials}>{item.name.substring(0, 2).toUpperCase()}</Text>
         </View>
-      </Card.Content>
-    </Card>
+      )}
+
+      <View style={styles.info}>
+        <Text style={[styles.name, { color: theme.colors.onSurface }]}>{item.name}</Text>
+        <Text style={[styles.meta, { color: theme.colors.textSecondary }]}>
+          {formatDate(item.dateOfBirth, locale, t('common.unknown_date'))}
+        </Text>
+      </View>
+
+      <View style={styles.right}>
+        <Text style={[styles.count, { color: accent }]}>{item.measurements.length}</Text>
+        <Text style={[styles.countLabel, { color: theme.colors.textSecondary }]}>
+          {item.measurements.length === 1 ? t('patients.count_one') : t('patients.count_other')}
+        </Text>
+      </View>
+    </TouchableOpacity>
   );
 
   return (
     <View style={[styles.container, { backgroundColor: theme.colors.background }]}>
       {patients.length === 0 ? (
-        <View style={styles.emptyContainer}>
-          <Text variant="titleLarge" style={[styles.emptyText, { color: professionalTheme.colors.textSecondary}]}>
-            No Patients Yet
+        <View style={styles.empty}>
+          <View style={[styles.emptyCircle, { borderColor: accent + '40' }]}>
+            <Text style={[styles.emptyIcon, { color: accent }]}>—</Text>
+          </View>
+          <Text style={[styles.emptyTitle, { color: theme.colors.onBackground }]}>
+            {t('patients.no_patients')}
           </Text>
-          <Text variant="bodyMedium" style={[styles.emptySubtext, { color: professionalTheme.colors.textSecondary }]}>
-            Tap the + button to add your first patient
+          <Text style={[styles.emptyDesc, { color: theme.colors.textSecondary }]}>
+            {t('patients.no_patients_desc')}
           </Text>
         </View>
       ) : (
@@ -72,71 +80,77 @@ export default function PatientListScreen({ navigation }: PatientListScreenProps
           renderItem={renderPatient}
           keyExtractor={(item) => item.id}
           contentContainerStyle={styles.list}
+          showsVerticalScrollIndicator={false}
         />
       )}
-      <FAB
-        icon="plus"
-        style={[styles.fab]}
-        color={professionalTheme.colors.primary}
+
+      <TouchableOpacity
+        style={styles.fab}
         onPress={() => navigation.navigate('AddPatient')}
-      />
+        activeOpacity={0.85}
+      >
+        <LinearGradient
+          colors={['#1a4fa0', '#0f2f6e']}
+          style={styles.fabGradient}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 1 }}
+        >
+          <Text style={styles.fabIcon}>+</Text>
+        </LinearGradient>
+      </TouchableOpacity>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  list: {
-    padding: 15,
-  },
+  container: { flex: 1 },
+  list: { padding: 20, paddingBottom: 100, gap: 12 },
   card: {
-    marginBottom: 15,
-  },
-  cardContent: {
     flexDirection: 'row',
     alignItems: 'center',
+    borderRadius: radius.lg,
+    padding: 16,
+    gap: 14,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.07,
+    shadowRadius: 3,
+    elevation: 2,
   },
-  avatar: {
-    marginRight: 15,
-    borderRadius: 30,
-    width: 60,
-    height: 60,
+  indexBadge: {
+    width: 32, height: 32, borderRadius: radius.sm,
+    alignItems: 'center', justifyContent: 'center',
   },
-  patientInfo: {
-    flex: 1,
+  indexNum: { fontSize: 12, fontFamily: 'SpaceGrotesk_700Bold' },
+  avatar: { width: 48, height: 48, borderRadius: radius.md },
+  avatarCircle: {
+    width: 48, height: 48, borderRadius: radius.md,
+    alignItems: 'center', justifyContent: 'center',
   },
-  patientName: {
-    fontWeight: 'bold',
-    fontFamily: 'KumbhSans_600SemiBold',
+  avatarInitials: { fontSize: 17, color: '#fff', fontFamily: 'SpaceGrotesk_700Bold' },
+  info: { flex: 1, gap: 3 },
+  name: { fontSize: 15, fontFamily: 'SpaceGrotesk_600SemiBold' },
+  meta: { fontSize: 12, fontFamily: 'SpaceGrotesk_400Regular' },
+  right: { alignItems: 'flex-end', gap: 2 },
+  count: { fontSize: 22, fontFamily: 'SpaceGrotesk_700Bold' },
+  countLabel: { fontSize: 10, fontFamily: 'SpaceGrotesk_400Regular' },
+  empty: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: 14 },
+  emptyCircle: {
+    width: 72, height: 72, borderRadius: radius.md,
+    borderWidth: 1, alignItems: 'center', justifyContent: 'center',
   },
-  patientDOB: {
-    marginTop: 4,
-    fontFamily: 'KumbhSans_400Regular',
-  },
-  measurementCount: {
-    marginTop: 4,
-    fontFamily: 'KumbhSans_400Regular',
-  },
-  emptyContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 20,
-  },
-  emptyText: {
-    marginBottom: 10,
-    fontFamily: 'KumbhSans_600SemiBold',
-  },
-  emptySubtext: {
-    fontFamily: 'KumbhSans_400Regular',
-  },
+  emptyIcon: { fontSize: 28, fontFamily: 'SpaceGrotesk_300Light' },
+  emptyTitle: { fontSize: 19, fontFamily: 'SpaceGrotesk_700Bold' },
+  emptyDesc: { fontSize: 14, fontFamily: 'SpaceGrotesk_400Regular', textAlign: 'center', paddingHorizontal: 40 },
   fab: {
-    backgroundColor:'white',
-    position: 'absolute',
-    margin: 16,
-    right: 0,
-    bottom: 0,
+    position: 'absolute', right: 24, bottom: 32,
+    width: 56, height: 56, borderRadius: radius.lg,
+    shadowColor: '#1a4fa0', shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.35, shadowRadius: 8, elevation: 8,
   },
+  fabGradient: {
+    width: 56, height: 56, borderRadius: radius.lg,
+    alignItems: 'center', justifyContent: 'center',
+  },
+  fabIcon: { fontSize: 28, color: '#fff', marginTop: -2 },
 });
