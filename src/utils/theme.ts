@@ -64,9 +64,3 @@ export const lightTheme = {
   ...MD3LightTheme,
   colors: { ...MD3LightTheme.colors, ...lightColors },
 };
-
-export const professionalTheme = darkTheme;
-
-export const fontConfig = {
-  fontFamily: 'SpaceGrotesk_400Regular',
-};
